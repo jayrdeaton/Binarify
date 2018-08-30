@@ -6,8 +6,7 @@ let { writeFile } = require('fs'),
 writeFile = promisify(writeFile);
 
 module.exports = async(options) => {
-  let { destination } = options;
-  let { origin } = options._parents.binarify;
+  let { origin, destination } = options;
 
   let string = await binarify({ origin });
 

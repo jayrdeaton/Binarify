@@ -9,8 +9,7 @@ readFile = promisify(readFile);
 writeFile = promisify(writeFile);
 
 module.exports = async (options) => {
-  let { destination } = options;
-  let { origin } = options._parents.binarify;
+  let { origin, destination } = options;
 
   if (!existsSync(origin)) throw new Error(`${origin} not found`);
 

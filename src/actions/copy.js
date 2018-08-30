@@ -3,7 +3,7 @@ let cosmetic = require('cosmetic');
   { copyString } = require('../helpers');
 
 module.exports = async (options) => {
-  let string = await binarify(options._parents.binarify);
+  let string = await binarify(options);
 
   await copyString(string);
 

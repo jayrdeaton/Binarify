@@ -1,22 +1,19 @@
 let { command, option } = require('termkit'),
+  cosmetic = require('cosmetic'),
   { binarify, copy, reverse, write } = require('../actions');
 
-let program = command('binarify', '<origin>')
+let program = command('binarify')
   .version(process.env.npm_package_version)
-  .description('Convert files to a binary string')
-  .options([
-    // option('t', 'token', '<token>', 'Supply auth token'),
-    // option('s', 'selections', '<selections>', 'Supply selections object')
-  ])
-  .action(async (options) => await binarify(options))
+  .description('Convert files to a binary string and back')
+  .action(async (options) => console.log(`Welcome to ${cosmetic.magenta('Binarify')}`))
   .commands([
-    command('copy')
+    command('copy', '<origin>')
     .description('Copy binary string to clipboard')
     .action(async (options) => await copy(options)),
-    command('write', '<destination>')
+    command('write', '<origin> <destination>')
     .description('Write binary string to file')
     .action(async (options) => await write(options)),
-    command('reverse', '<destination>')
+    command('reverse', '<origin> <destination>')
     .description('Write binary string to file')
     .action(async (options) => await reverse(options))
   ]);
